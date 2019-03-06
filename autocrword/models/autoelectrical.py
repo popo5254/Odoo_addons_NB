@@ -16,10 +16,15 @@ class electrical_specialty(models.Model):
     yjv300 = fields.Float(u'直埋电缆YJV22-26/35-1×300（km）', required=True)
     circuit_number = fields.Integer(u'线路回路数', required=True)
 
+
     @api.multi
     def button_electrical(self):
         projectname = self.project_id
         myself = self
         projectname.electrical_attachment_id = myself
         projectname.electrical_attachment_ok = u"已提交,版本：" + self.version_id
+        return True
+
+    @api.multi
+    def electrical_generate(self):
         return True
